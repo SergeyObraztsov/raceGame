@@ -1,7 +1,10 @@
 const score = document.querySelector('.score'),
     start = document.querySelector('.start'),
     gameArea = document.querySelector('.gameArea'),
-    car = document.createElement('div');
+    car = document.createElement('div'),
+    music = document.createElement('audio');
+
+
 
 car.classList.add('car');
 
@@ -27,6 +30,10 @@ start.addEventListener('click', () => {
     }
     setting.start = true;
     gameArea.appendChild(car);
+    gameArea.appendChild(music);
+    music.setAttribute('autoplay', true);
+    music.setAttribute('src', './audio.mp3');
+    music.setAttribute('controls', true);
     setting.x = car.offsetLeft;
     setting.y = car.offsetTop;
     requestAnimationFrame(playGame);
@@ -96,6 +103,14 @@ function moveRoad(){
 function moveEnemy(){
     let enemy = document.querySelectorAll('.enemy');
     enemy.forEach(function(item){
+        let carRect = car.getBoundingClientRect();
+        let enemyRect = item.getBoundingClientRect();
+
+        if(carRect.top <= enemyRect.bottom) {
+            console.log('дтп');
+        }
+
+
         item.y += setting.speed / 2;
         item.style.top = item.y + 'px';
         if (item.y >= document.documentElement.clientHeight) {
