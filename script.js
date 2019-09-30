@@ -44,9 +44,6 @@ start.addEventListener('click', () => {
     setting.x = car.offsetLeft;
     setting.y = car.offsetTop;
     requestAnimationFrame(playGame);
-    // setTimeout(function(){
-    //     setting.start = false;
-    // }, 10000);
 });
 document.addEventListener('keydown', startRun);
 document.addEventListener('keyup', stopRun);
@@ -62,7 +59,7 @@ const setting = {
     start: false,
     score: 0,
     speed: 3,
-    traffic: 2
+    traffic: 3
 };
 
 function getQuantityElements(heightElement){
